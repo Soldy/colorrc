@@ -96,8 +96,8 @@ const colorBase=function(){
      * @return {boolean}
      */
     const hexShortCheck = function(color){
-        let arr = [];
-        if (color.length !== 7)
+        let arr;
+        if (color.length !== 4)
             return false;
         try{
             arr = hexShortToArray(color);
@@ -153,13 +153,15 @@ const colorBase=function(){
      * @private
      * @return {boolean}
      */
-    const rgbaInCheck = function(){
-        let arr = [];
+    const rgbaInCheck = function(color){
+        let arr ;
         try{
             arr = rgbaInToArray(color);
         }catch(e){
             return false;
         }
+        if(arr.length !== 4)
+            return false;
         if(arrayCheck(arr))
             return true;
         return false;
@@ -170,7 +172,7 @@ const colorBase=function(){
      * @return {boolean}
      */
     const rgbaInToArray = function(color){
-        return color.replace(/[.,;:]/g, ',').split('.');
+        return color.replace(/[,;:]/g, ',').split(',');
     };
     /*
      * @param {string} color
@@ -178,8 +180,9 @@ const colorBase=function(){
      * @return {boolean}
      */
     const rgbCheck = function(color){
+        let rgbIn;
         try{
-            let rgbaIn = rgbToRgbIn(color);
+            rgbIn = rgbToRgbIn(color);
         }catch(e){
             return false;
         }
@@ -215,7 +218,7 @@ const colorBase=function(){
      * @return {boolean}
      */
     const rgbInCheck = function(color){
-        let arr = [];
+        let arr; 
         try{
             arr = rgbInToArray(color);
         }catch(e){
@@ -231,7 +234,7 @@ const colorBase=function(){
      * @return {string}
      */
     const rgbInToArray = function(color){
-        return color.replace(/[.,;:]/g, ',').split('.');
+        return color.replace(/[.,;:]/g, ',').split(',');
     };
     /*
      * @param {string} color
