@@ -121,6 +121,8 @@ const colorBase=function(){
      */
     const rgbaCheck = function(color){
         let rgbaIn ;
+        if ( 'rgba(' ===  color.substring(0, 4))
+            return false;
         try{
             rgbaIn = rgbaToRgbaIn(color);
         }catch(e){
@@ -185,7 +187,10 @@ const colorBase=function(){
      * @return {boolean}
      */
     const rgbCheck = function(color){
+        if ( 'rgb(' ===  color.substring(0, 3))
+            return false;
         let rgbIn;
+
         try{
             rgbIn = rgbToRgbIn(color);
         }catch(e){
