@@ -13,11 +13,13 @@ const colorBase=function(){
      * @return {string} type
      */
     this.check = function(color){
-        color = cleaTrim(color);
+        color = clearTrim(color);
         if(hexCheck(color))
             return 'hex';
         if(hexShortCheck(color))
             return 'hex';
+        if(vt100Check(color))
+            return 'vt100';
         if(rgbaCheck(color))
             return 'rgba';
         if(rgbCheck(color))
@@ -246,6 +248,35 @@ const colorBase=function(){
      * @private
      * @return {boolean}
      */
+    const vt100Check = function(color){
+        let arr = [];
+        if (
+            (5 > color.length)||
+             (color.length > 11)
+        )
+            return false;
+        try{
+            arr = vt100ToArray(color);
+        }catch(e){
+            return false;
+        }
+        if(arrayCheck(arr))
+            return true;
+        return false;
+    };
+    /*
+     * @param {string} color
+     * @private
+     * @return {array}
+     */
+    const vt100ToArray = function(color){
+        return color.split(';');
+    };
+    /*
+     * @param {string} color
+     * @private
+     * @return {boolean}
+     */
     const arrayCheck = function(color){
         const length = color.length;
         if( 
@@ -324,6 +355,20 @@ const colorBase=function(){
      * @private
      * @return {integer}
      */
+    const arrayToVT100 = function(color){
+        return (
+            color[0],+
+            ';'+
+            color[1]+
+            ';'+
+            color[2]
+        );
+    };
+    /*
+     * @param {array}
+     * @private
+     * @return {integer}
+     */
     const hexToInteger = function(...a){
         let hex = '0x';
         for(let i of a)
@@ -335,7 +380,7 @@ const colorBase=function(){
      * @private
      * @param {string}
     */
-    const cleanTrim = function(color){
+    const clearTrim = function(color){
         return color
             .replace(/ /g, '');
     };

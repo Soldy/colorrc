@@ -3,7 +3,7 @@ const nanoTest  = new (require('nanoTest')).test({
 });
 const colorrc = new (require('./index.js')).base();
 nanoTest.add(
-    'hex short',
+    'hex short check',
     {
         'function':colorrc.check,
         'options':['#fff']
@@ -13,7 +13,7 @@ nanoTest.add(
 );
 
 nanoTest.add(
-    'hex',
+    'hex check',
     {
         'function':colorrc.check,
         'options':['#aaaaaa']
@@ -24,7 +24,7 @@ nanoTest.add(
 
 
 nanoTest.add(
-    'rgb',
+    'rgb check',
     {
         'function':colorrc.check,
         'options':['rgb(255,14,5)']
@@ -36,7 +36,7 @@ nanoTest.add(
 
 
 nanoTest.add(
-    'rgba',
+    'rgba check',
     {
         'function':colorrc.check,
         'options':['rgb(255,14,5,0.1)']
@@ -44,5 +44,26 @@ nanoTest.add(
     '===',
     'rgba'
 );
+
+nanoTest.add(
+    'rgba check with space',
+    {
+        'function':colorrc.check,
+        'options':['rgb ( 255, 14,5,0.1 )']
+    },
+    '===',
+    'rgba'
+);
+
+nanoTest.add(
+    'vt100 check',
+    {
+        'function':colorrc.check,
+        'options':['4;65;214']
+    },
+    '===',
+    'vt100'
+);
+
 
 nanoTest.run();
