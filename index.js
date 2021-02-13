@@ -13,6 +13,7 @@ const colorBase=function(){
      * @return {string} type
      */
     this.check = function(color){
+        color = cleaTrim(color);
         if(hexCheck(color))
             return 'hex';
         if(hexShortCheck(color))
@@ -172,7 +173,9 @@ const colorBase=function(){
      * @return {boolean}
      */
     const rgbaInToArray = function(color){
-        return color.replace(/[,;:]/g, ',').split(',');
+        return color
+            .replace(/[,;:]/g, ',')
+            .split(',');
     };
     /*
      * @param {string} color
@@ -234,7 +237,9 @@ const colorBase=function(){
      * @return {string}
      */
     const rgbInToArray = function(color){
-        return color.replace(/[.,;:]/g, ',').split(',');
+        return color
+            .replace(/[.,;:]/g, ',')
+            .split(',');
     };
     /*
      * @param {string} color
@@ -248,14 +253,71 @@ const colorBase=function(){
             (length > 5 )
         )
             return false;
-        for (let i of color)
+        for (let i = 0 ; 3 > i ; i++)
             if (
-                (0>i)||
-                (i>255)
+                (0>color[i])||
+                (color[i]>255)
             )
                 return false;
         return true;
 
+    };
+    /*
+     * @param {array}
+     * @private
+     * @return {array}
+     */
+    const arrayExtend = function(color){
+        if(color.length === 3 )
+            color[3]=1;
+        return color;
+    };
+    /*
+     * @param {array}
+     * @private
+     * @return {integer}
+     */
+    const arrayToRgba = function(color){
+        color = arrayExtend(color);
+        return (
+            'rgba('+
+            color[0],+
+            ', '+
+            color[1]+
+            ', '+
+            color[2]+
+            ', '+
+            color[3]+
+            ')'
+        );
+    };
+    /*
+     * @param {array}
+     * @private
+     * @return {integer}
+     */
+    const arrayToRgb = function(color){
+        return (
+            'rgba('+
+            color[0],+
+            ', '+
+            color[1]+
+            ', '+
+            color[2]+
+            ')'
+        );
+    };
+    /*
+     * @param {array}
+     * @private
+     * @return {string}
+     */
+    const arrayToHex = function(color){
+        let hex = '#';
+        for (let i = 0 ; 3 > i ; i++)
+            hex += color[i]
+                .toString(16);
+        return hex;
     };
     /*
      * @param {array}
@@ -267,6 +329,15 @@ const colorBase=function(){
         for(let i of a)
             hex+=i;
         return parseInt(hex);
+    };
+    /*
+     * @param {string}
+     * @private
+     * @param {string}
+    */
+    const cleanTrim = function(color){
+        return color
+            .replace(/ /g, '');
     };
 };
 
