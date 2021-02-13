@@ -39,7 +39,7 @@ nanoTest.add(
     'rgba check',
     {
         'function':colorrc.check,
-        'options':['rgb(255,14,5,0.1)']
+        'options':['rgba(255,14,5,0.1)']
     },
     '===',
     'rgba'
@@ -49,7 +49,7 @@ nanoTest.add(
     'rgba check with space',
     {
         'function':colorrc.check,
-        'options':['rgb ( 255, 14,5,0.1 )']
+        'options':['rgba( 255, 14,5,0.1 )']
     },
     '===',
     'rgba'
