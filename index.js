@@ -21,6 +21,58 @@ const colorBase=function(){
      * @return {string} type
      */
     this.check = function(color){
+        return check(color);
+    };
+    /*
+     * @param {string||array||integer} color
+     * @param {string} type
+     * @public
+     * @return {string||array||integer} color
+     */
+    this.to = function(color, type){
+        return to(
+            color, 
+            type
+        );
+    };
+    /*
+     * @const {object}
+     */
+    const types = {
+        'array'    : array,
+        'hex'      : hex,
+        'hexShort' : hexShort,
+        'rgb'      : rgb,
+        'rgbIn'    : rgbIn,
+        'rgba'     : rgba,
+        'rgbaIn'   : rgbaIn,
+        'vt100'    : vt100
+    };
+    /*
+     * @param {string||array||integer} color
+     * @param {string} type
+     * @private
+     * @return {string} type
+     */
+    const to = function(color, type){
+        if(typeof types[type] === 'undefined')
+            return color;
+        let inType = check(color);
+        if(typeof types[inType] === 'undefined')
+            return color;
+        return types[type].fromArray(
+            types[inType].toArray(
+                color
+            )
+        );
+
+    };
+    /*
+     * @param {string} color
+     * @private
+     * @return {string} type
+     */
+    const check = function(color){
         color = clearTrim(color);
         if(hex.check(color))
             return 'hex';
@@ -41,7 +93,8 @@ const colorBase=function(){
     */
     const clearTrim = function(color){
         return color
-            .replace(/ /g, '');
+            .replace(/ /g, '')
+            .toLowerCase();
     };
 };
 
