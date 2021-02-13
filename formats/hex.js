@@ -14,7 +14,7 @@ const colorHexBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -22,7 +22,7 @@ const colorHexBase=function(){
      */
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -30,7 +30,7 @@ const colorHexBase=function(){
      */
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {string} color
      * @private
@@ -79,7 +79,7 @@ const colorHexBase=function(){
         )
             return true;
         return false;
-    }
+    };
     /*
      * @param {array}
      * @private
@@ -91,6 +91,6 @@ const colorHexBase=function(){
             hex+=i;
         return parseInt(hex);
     };
-}
+};
 
 exports.base = colorHexBase;

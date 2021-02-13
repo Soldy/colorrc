@@ -14,7 +14,7 @@ const colorRgbaBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -22,7 +22,7 @@ const colorRgbaBase=function(){
      */
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -30,7 +30,7 @@ const colorRgbaBase=function(){
      */
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {string} color
      * @private
@@ -56,7 +56,7 @@ const colorRgbaBase=function(){
             color[2]+
             ')'
         );
-    }
+    };
     /*
      * @param {string} color
      * @private
@@ -74,8 +74,8 @@ const colorRgbaBase=function(){
         if(rgbaIn.check(rgbaInVal))
             return true;
         return false;
-    }
-}
+    };
+};
 
 exports.base = colorRgbaBase;
 

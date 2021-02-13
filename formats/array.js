@@ -14,7 +14,7 @@ const colorArrayBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -22,7 +22,7 @@ const colorArrayBase=function(){
      */
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -30,7 +30,7 @@ const colorArrayBase=function(){
      */
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @private
@@ -62,7 +62,7 @@ const colorArrayBase=function(){
             )
                 return false;
         return true;
-    }
+    };
     /*
      * @param {array} color
      * @private
@@ -73,7 +73,7 @@ const colorArrayBase=function(){
             color[3]=1;
         return color;
 
-    }
-}
+    };
+};
 
 exports.base = colorArrayBase;

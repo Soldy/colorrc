@@ -14,7 +14,7 @@ const colorRgbBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -22,7 +22,7 @@ const colorRgbBase=function(){
      */
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -30,7 +30,7 @@ const colorRgbBase=function(){
      */
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {string} color
      * @private
@@ -49,14 +49,14 @@ const colorRgbBase=function(){
     const fromArray = color => {
         return (
             'rgb('+
-            color[0],+
+            color[0]+
             ', '+
             color[1]+
             ', '+
             color[2]+
             ')'
         );
-    }
+    };
     /*
      * @param {string} color
      * @private
@@ -74,8 +74,8 @@ const colorRgbBase=function(){
         if(rgbIn.check(rgbInVal))
             return true;
         return false;
-    }
-}
+    };
+};
 
 exports.base = colorRgbBase;
 

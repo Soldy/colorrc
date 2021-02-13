@@ -14,13 +14,13 @@ const colorRgbInBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -69,8 +69,8 @@ const colorRgbInBase=function(){
         if(array.check(arr))
             return true;
         return false;
-    }
-}
+    };
+};
 
 exports.base = colorRgbInBase;
 

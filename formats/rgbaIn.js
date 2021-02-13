@@ -14,7 +14,7 @@ const colorRgbaInBase=function(){
      */
     this.check = function(color){
         return check(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -22,7 +22,7 @@ const colorRgbaInBase=function(){
      */
     this.toArray = function(color){
         return toArray(color);
-    }
+    };
     /*
      * @param {array} color
      * @public
@@ -30,7 +30,7 @@ const colorRgbaInBase=function(){
      */
     this.fromArray = function(color){
         return fromArray(color);
-    }
+    };
     /*
      * @param {string} color
      * @public
@@ -91,7 +91,7 @@ const colorRgbaInBase=function(){
         if(array.check(arr))
             return true;
         return false;
-    }
-}
+    };
+};
 
 exports.base = colorRgbaInBase;

@@ -6,7 +6,7 @@ const array = new (require('./array.js')).base();
 /*
  * @prototype
  */
-const colorVT100Base=function(){
+const colorHslBase=function(){
     /*
      * @param {string} color
      * @public
@@ -37,7 +37,27 @@ const colorVT100Base=function(){
      * @return {array}
      */
     const toArray = color =>{
-        return color.split(';');
+        let arr = color.split(',');
+        let H = arr[0] / 60;
+        let S = arr[1] / 100;
+        let V = arr[2] / 100;
+        let Hn = Math.round(H) % 6;
+        let f = H - Math.round(H);
+        let I = 255 * V * (1 - S);
+        let E = 255 * V * (1 - (S * f));
+        let X = 255 * V * (1 - (S * (1 - f)));
+        let C = V * 255;
+        if(1 > Hn)
+            return [C, X, I];
+        if(2 > Hn)
+            return [E, C, I];
+        if(3 > Hn)
+            return [I, C, X];
+        if(4 > Hn)
+            return [I, E, C];
+        if(5 > Hn)
+            return [X, I, C];
+        return [C, I, E];
     };
     /*
      * @param {array} color
@@ -45,13 +65,7 @@ const colorVT100Base=function(){
      * @return {string}
      */
     const fromArray = color =>{
-        return (
-            color[0],+
-            ';'+
-            color[1]+
-            ';'+
-            color[2]
-        );
+        return ;
     };
     /*
      * @param {string} color
@@ -59,23 +73,7 @@ const colorVT100Base=function(){
      * @return {boolean}
      */
     const check = (color)=>{
-        let arr = [];
-        if (
-            (5 > color.length)||
-             (color.length > 11)
-        )
-            return false;
-        try{
-            arr = toArray(color);
-        }catch(e){
-            return false;
-        }
-        if(arr.length !== 3)
-            return false;
-        if(array.check(arr))
-            return true;
-        return false;
     };
 };
 
-exports.base = colorVT100Base;
+exports.base = colorHslBase;
