@@ -64,6 +64,16 @@ nanoTest.add(
     '===',
     'vt100'
 );
+nanoTest.add(
+    'hex to rgb',
+    {
+        'function':colorrc.to,
+        'options':['#ffffff','rgb']
+    },
+    '===',
+    'rgb(255, 255, 255)'
+);
+
 
 
 nanoTest.run();
