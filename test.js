@@ -1,7 +1,8 @@
 const nanoTest  = new (require('nanoTest')).test({
-    'debugPrint' : 'short'
+    'progress_bar'   : false,
+    'debug_print'    : 'short'
 });
-const colorrc = new (require('./index.js')).base();
+const colorrc = (require('./index.js')).base;
 nanoTest.add(
     'hex short check',
     {
