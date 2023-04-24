@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/Soldy/colorrc#readme",
   "devDependencies": {
-    "nanoTest": "^0.9.9-beta17b"
+    "nanoTest": "0.9.9-beta32"
+  },
+  "dependencies": {
+    "clonerc": "0.0.2",
+    "theuniverse": "0.2.2"
   }
 }
